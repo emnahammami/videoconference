@@ -1,8 +1,8 @@
 import firebase from "firebase";
 
 var firebaseConfig = {
-  apiKey: "", // Add API Key
-  databaseURL:"" // Add databaseURL
+  apiKey: "AIzaSyBFxijAY3GWQzdf_JiFJUO2vzhAYkyfHCM", // Add API Key
+  databaseURL: "https://beatbounceandscore-default-rtdb.firebaseio.com/",
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
