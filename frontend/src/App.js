@@ -21,8 +21,12 @@ import ProfileU from "./ProfileU"
 import UserManagement from "./Admin/UserManagment";
 import UserGenderChart from "./Admin/UserGenderChart";
 import UserRolesChart from "./Admin/UserRolesChart";
-
+import Room from "./videoroom/Room"
+import Join from "./videoroom/Join";
+import { useState } from "react";
 function App() {
+
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(get_current());
@@ -90,6 +94,18 @@ function App() {
         <Route
           path="/count"
           element={<UserRolesChart  />}
+        />
+          <Route
+          path="/room/:id"
+          element={<Room/>}
+        />
+          <Route
+          path="/room"
+          element={<Room/>}
+        />
+         <Route
+          path="/join"
+          element={<Join/>}
         />
       </Routes>
     </div>

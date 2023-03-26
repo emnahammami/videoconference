@@ -98,10 +98,7 @@ const Usercard = ({ el }) => {
             >
               <Button variant="danger" className="btn-round" size="lg" onClick={() => dispatch(deleteusers(el._id))}>DELETE</Button>
               <Button variant="warning" className="btn-round" size="lg" onClick={handleShow}>edit</Button>
-              </ListGroup.Item>ListGroup.Item
-              <ListGroup.Item
-             
-            >
+           
               <Button variant="danger" className="btn-round" size="lg" disabled={(el.isBanned=="true")} onClick={banuser} >Ban</Button>
               <Button variant="success"  className="btn-round" size="lg" disabled={(el.isBanned=="false")} onClick={unbanuser}>Unban</Button>
             </ListGroup.Item>

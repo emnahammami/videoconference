@@ -2,7 +2,7 @@ const users = require("../model/user");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
-const user = require("../model/user");
+
 const nodemailer = require("nodemailer");
 const keysecret = process.env.secretorkey
 
@@ -30,34 +30,35 @@ exports.Register = async (req, res) => {
   }
 };
 exports.Login = async (req, res) => {
-  const { email, password, id,isBanned } = req.body;
+  const { email, password, id, isBanned } = req.body;
   try {
     const foundUser = await users.findOne({ email });
-    if (foundUser.isBanned=="true") 
-    { return res.status(400).send({ errors: [{ msg: "your account is banned" }] }); }
     if (!foundUser) {
-      return res.status(400).send({ errors: [{ msg: "bad credentials , Email not found" }] });
+      return res.status(400).send({ errors: [{ msg: "bad credentials, Email not found" }] });
     }
-    //jwt
 
     const match = await bcrypt.compare(password, foundUser.password);
     if (!match) {
-      return res.status(400).send({ errors: [{ msg: "bad credentials , password doesn't match" }] });
+      return res.status(400).send({ errors: [{ msg: "bad credentials, password doesn't match" }] });
     }
-   /* if (isBanned=='true') {
-      return res.status(400).send({ errors: [{ msg: "is banned" }] });
-    } */
+
+    if (foundUser.isBanned=="true") {
+      return res.status(400).send({ errors: [{ msg: "your account is banned" }] });
+    }
+
     const payload = { id: foundUser._id };
     const token = jwt.sign(payload, process.env.secretorkey);
-    res.status(200).send({ msg: "logging with succ", foundUser, token });
 
     foundUser.isActivated = true;
     foundUser.lastLogin = new Date();
     await foundUser.save();
+
+    res.status(200).send({ msg: "logging with succ", foundUser, token });
   } catch (error) {
     res.status(500).send({ msg: "couldn't logging" });
   }
 };
+
 exports.Getusers = async (req, res) => {
   try {
     const userss = await users.find();

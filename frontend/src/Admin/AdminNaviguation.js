@@ -92,7 +92,7 @@ export default function AdminNaviguation() {
                           color="default"
                           nav
                         >
-                          <i aria-hidden="true" class="now-ui-icons ui-1_settings-gear-63"></i>
+                          <i aria-hidden="true" className="now-ui-icons ui-1_settings-gear-63"></i>
                           <p>Settings</p>
                         </DropdownToggle>
                         <DropdownMenu>

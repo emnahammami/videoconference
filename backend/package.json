@@ -1,13 +1,16 @@
 {
   "dependencies": {
-    "bcrypt": "^5.0.1",
+    "bcrypt": "^5.1.0",
     "cors": "^2.8.5",
     "express": "^4.18.2",
     "express-validator": "^6.15.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.10.1",
     "nodemailer": "^6.9.1",
-    "reactstrap": "^8.9.0"
+    "reactstrap": "^8.9.0",
+    "socket.io": "^4.6.1",
+    "twilio": "^4.8.0",
+    "webrtc": "^1.14.1"
   },
   "name": "backend",
   "version": "1.0.0",
